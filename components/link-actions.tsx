@@ -57,8 +57,10 @@ export function LinkActions({ data, onEdit, onDelete }: LinkActionsProps) {
   };
 
   const handleCopy = () => {
-    const baseUrl = window.location.origin;
-    navigator.clipboard.writeText(`${baseUrl}/${data.code}`);
+    const redirectLink = `${process.env.NEXT_PUBLIC_CLOUDFLARE_REDIRECTOR}/${data.code}`;
+
+    navigator.clipboard.writeText(redirectLink);
+
     toast.success('Link copied to clipboard');
   };
 

@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Link } from '@/lib/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 

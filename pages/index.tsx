@@ -1,15 +1,15 @@
 // import Layout from '../components/layout'
 // import NestedLayout from '../components/nested-layout'
 
-import { LinkIcon } from 'lucide-react';
-import { ThemeProvider } from 'next-themes';
 import { Suspense } from 'react';
 import { Toaster } from 'sonner';
 
-import { useState, useEffect } from 'react';
 import { PlusCircle, RefreshCcw } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
+import { columns } from '@/components/link-columns';
+import { LinkForm } from '@/components/link-form';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -26,11 +26,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { LinkForm } from '@/components/link-form';
-import { columns } from '@/components/link-columns';
 import { getAllLinks } from '@/lib/api';
 import { Link } from '@/lib/types';
-import { ThemeToggle } from '@/components/theme-toggle';
 
 function LinksClient() {
   const [links, setLinks] = useState<Link[]>([]);
@@ -160,39 +157,3 @@ export default function Page() {
     </main>
   );
 }
-
-// Page.getLayout = function getLayout(page: React.ReactNode) {
-//   return (
-//     <html lang="en" suppressHydrationWarning>
-//       <body>
-//         <ThemeProvider
-//           attribute="class"
-//           defaultTheme="system"
-//           enableSystem
-//           disableTransitionOnChange
-//         >
-//           <div className="min-h-screen bg-background">
-//             <header className="border-b">
-//               <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-//                 <div className="flex items-center space-x-2">
-//                   <LinkIcon className="h-6 w-6" />
-//                   <h1 className="text-xl font-bold">URL Shortener</h1>
-//                 </div>
-//                 <ThemeToggle />
-//               </div>
-//             </header>
-
-//             {page}
-
-//             <footer className="border-t mt-auto">
-//               <div className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
-//                 &copy; {new Date().getFullYear()} URL Shortener. All rights
-//                 reserved.
-//               </div>
-//             </footer>
-//           </div>
-//         </ThemeProvider>
-//       </body>
-//     </html>
-//   );
-// };
