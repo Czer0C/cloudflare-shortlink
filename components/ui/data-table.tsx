@@ -273,7 +273,7 @@ export function LinkCard({ link, actionCell }: LinkCardProps) {
       <CardHeader className="pb-2 pt-3">
         <CardTitle className="text-base truncate">
           <a
-            href={link.url}
+            href={redirectLink}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
