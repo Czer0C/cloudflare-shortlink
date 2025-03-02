@@ -83,10 +83,12 @@ function LinksClient() {
       <Card>
         <CardHeader>
           <CardTitle>All Links</CardTitle>
+
           <CardDescription>
             Manage your shortened URLs. Click on actions to edit or delete.
           </CardDescription>
         </CardHeader>
+
         <CardContent>
           {loading ? (
             <div className="flex justify-center items-center h-64">

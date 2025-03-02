@@ -3,6 +3,7 @@ export interface Link {
   url: string;
   time_created: string;
   time_updated: string;
+  image?: string;
 }
 
 export interface ApiResponse {
