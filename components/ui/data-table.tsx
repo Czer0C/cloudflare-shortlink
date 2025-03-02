@@ -190,7 +190,7 @@ function CardView({ table }: { table: any }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {table.getRowModel().rows.map((row: any, idx) => {
+      {table.getRowModel().rows.map((row: any, idx: number) => {
         const link = row.original;
 
         const actionCell = row
