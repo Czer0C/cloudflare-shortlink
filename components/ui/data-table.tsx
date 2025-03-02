@@ -171,7 +171,12 @@ export function DataTable<TData, TValue>({
     </div>
   );
 }
-
+const randomLinks = [
+  'https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=500&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=500&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=500&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=500&auto=format&fit=crop',
+];
 function CardView({ table }: { table: any }) {
   if (table.getRowModel().rows.length === 0) {
     return (
@@ -185,12 +190,16 @@ function CardView({ table }: { table: any }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {table.getRowModel().rows.map((row: any) => {
+      {table.getRowModel().rows.map((row: any, idx) => {
         const link = row.original;
 
         const actionCell = row
           .getVisibleCells()
           .find((i: any) => `${i?.id}`.includes('action'));
+
+        const src = randomLinks[idx % randomLinks.length];
+
+        link.image = src;
 
         return <LinkCard key={link.code} link={link} actionCell={actionCell} />;
       })}
@@ -228,18 +237,12 @@ export function LinkCard({ link, actionCell }: LinkCardProps) {
       <div className="relative">
         <AspectRatio ratio={16 / 9}>
           <div className="w-full h-full bg-muted overflow-hidden">
-            {link?.image ? (
-              <img
-                src={imageError ? fallbackImage : link.image}
-                alt={`Cover for ${redirectLink}`}
-                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-gradient-to-br from-indigo-300 to-indigo-800">
-                <p className="text-2xl">No Image</p>
-              </div>
-            )}
+            <img
+              src={imageError ? fallbackImage : link.image}
+              onError={() => setImageError(true)}
+              alt={`Cover for ${redirectLink}`}
+              className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            />
           </div>
         </AspectRatio>
 

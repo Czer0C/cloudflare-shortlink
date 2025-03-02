@@ -1,12 +1,8 @@
-import type { AppProps } from 'next/app';
-import { ThemeProvider } from 'next-themes';
-import { Inter } from 'next/font/google';
-import { Toaster } from '@/components/ui/toaster';
+import { ThemeToggle } from '@/components/theme-toggle';
 import '@/styles/globals.css';
 import { LinkIcon } from 'lucide-react';
-import { ThemeToggle } from '@/components/theme-toggle';
-
-const inter = Inter({ subsets: ['latin'] });
+import { ThemeProvider } from 'next-themes';
+import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
